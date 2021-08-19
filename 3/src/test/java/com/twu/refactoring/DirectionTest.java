@@ -1,5 +1,6 @@
 package com.twu.refactoring;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,26 +13,26 @@ public class DirectionTest {
     private Direction east;
 
     @BeforeEach
-    public void setUp() throws Exception {
+    public void setUp() {
         north = new Direction('N');
         east = new Direction('E');
     }
 
     @Test
-    public void shouldTurnEastWhenTurnRightFromNorth() {
+    public void should_Turn_East_When_Turn_Right_From_North() {
         Direction east = north.turnRight();
-        assertThat(east, is(new Direction('E')));
+        Assertions.assertEquals('E', east.getDirection());
     }
 
     @Test
-    public void shouldTurnWestWhenTurnLeftFromNorth() {
+    public void should_Turn_West_When_Turn_Left_From_North() {
         Direction west = north.turnLeft();
-        assertThat(west, is(new Direction('W')));
+        Assertions.assertEquals('W', west.getDirection());
     }
 
     @Test
-    public void shouldTurnNorthWhenTurnLeftFromEast() {
+    public void should_Turn_North_When_Turn_Left_From_East() {
         Direction north = east.turnLeft();
-        assertThat(north, is(new Direction('N')));
+        Assertions.assertEquals('N', north.getDirection());
     }
 }

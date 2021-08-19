@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class DateParserTest {
     @Test
-    public void shouldThrowExceptionIfYearStringCannotBeParsed() {
+    public void should_Throw_Exception_If_Year_String_Cannot_Be_Parsed() {
         try {
             new DateParser("111").parse();
             fail("Should have failed since the year string is less than 4 characters");
@@ -22,7 +22,7 @@ public class DateParserTest {
     }
 
     @Test
-    public void shouldThrowExceptionIfYearIsNotInteger() {
+    public void should_Throw_Exception_If_Year_Is_Not_Integer() {
         try {
             new DateParser("abcd").parse();
             fail("Should have failed since the year string is not an integer");
@@ -32,7 +32,7 @@ public class DateParserTest {
     }
 
     @Test
-    public void shouldThrowExceptionIfYearIsLessThan2000() {
+    public void should_Throw_Exception_If_Year_Is_Less_Than_2000() {
         try {
             new DateParser("1999").parse();
             fail("Should have failed since the year is less than 2000");
@@ -42,7 +42,7 @@ public class DateParserTest {
     }
 
     @Test
-    public void shouldThrowExceptionIfMonthStringCannotBeParsed() {
+    public void should_Throw_Exception_If_Month_String_Cannot_Be_Parsed() {
         try {
             new DateParser("2012-1").parse();
             fail("Should have failed since the month string is less than 2 characters");
@@ -52,7 +52,7 @@ public class DateParserTest {
     }
 
     @Test
-    public void shouldThrowExceptionIfMonthIsNotInteger() {
+    public void should_Throw_Exception_If_Month_Is_Not_Integer() {
         try {
             new DateParser("2012-ab").parse();
             fail("Should have failed since the month string is not an integer");
@@ -62,7 +62,7 @@ public class DateParserTest {
     }
 
     @Test
-    public void shouldThrowExceptionIfMonthIsMoreThan12() {
+    public void should_Throw_Exception_If_Month_Is_More_Than_12() {
         try {
             new DateParser("2012-13").parse();
             fail("Should have failed since the month is more than 12");
@@ -72,7 +72,7 @@ public class DateParserTest {
     }
 
     @Test
-    public void shouldThrowExceptionIfDateStringCannotBeParsed() {
+    public void should_Throw_Exception_If_Date_String_Cannot_Be_Parsed() {
         try {
             new DateParser("2012-12-1").parse();
             fail("Should have failed since the date string is less than 2 characters");
@@ -82,7 +82,7 @@ public class DateParserTest {
     }
 
     @Test
-    public void shouldThrowExceptionIfDateIsNotInteger() {
+    public void should_Throw_Exception_If_Date_Is_Not_Integer() {
         try {
             new DateParser("2012-12-ab").parse();
             fail("Should have failed since the date string is not an integer");
@@ -92,7 +92,7 @@ public class DateParserTest {
     }
 
     @Test
-    public void shouldThrowExceptionIfDateIsMoreThan31() {
+    public void should_Throw_Exception_If_Date_Is_More_Than_31() {
         try {
             new DateParser("2012-12-32").parse();
             fail("Should have failed since the date is more than 31");
@@ -102,7 +102,7 @@ public class DateParserTest {
     }
 
     @Test
-    public void shouldThrowExceptionIfHourStringCannotBeParsed() {
+    public void should_Throw_Exception_If_Hour_String_Cannot_Be_Parsed() {
         try {
             new DateParser("2012-12-11T0").parse();
             fail("Should have failed since the hour string is less than 2 characters");
@@ -112,7 +112,7 @@ public class DateParserTest {
     }
 
     @Test
-    public void shouldThrowExceptionIfHourIsNotInteger() {
+    public void should_Throw_Exception_If_Hour_Is_Not_Integer() {
         try {
             new DateParser("2012-12-30Tab").parse();
             fail("Should have failed since the hour string is not an integer");
@@ -122,7 +122,7 @@ public class DateParserTest {
     }
 
     @Test
-    public void shouldThrowExceptionIfHourIsMoreThan23() {
+    public void should_Throw_Exception_If_Hour_Is_More_Than_23() {
         try {
             new DateParser("2012-12-31T24").parse();
             fail("Should have failed since the hour is more than 23");
@@ -132,7 +132,7 @@ public class DateParserTest {
     }
 
     @Test
-    public void shouldThrowExceptionIfMinuteStringCannotBeParsed() {
+    public void should_Throw_Exception_If_Minute_String_Cannot_Be_Parsed() {
         try {
             new DateParser("2012-12-11T01:1").parse();
             fail("Should have failed since the minute string is less than 2 characters");
@@ -142,7 +142,7 @@ public class DateParserTest {
     }
 
     @Test
-    public void shouldThrowExceptionIfMinuteIsNotInteger() {
+    public void should_Throw_Exception_If_Minute_Is_Not_Integer() {
         try {
             new DateParser("2012-12-30T01:ab").parse();
             fail("Should have failed since the minute string is not an integer");
@@ -152,7 +152,7 @@ public class DateParserTest {
     }
 
     @Test
-    public void shouldThrowExceptionIfMinuteIsMoreThan59() {
+    public void should_Throw_Exception_If_Minute_Is_More_Than_59() {
         try {
             new DateParser("2012-12-31T23:60").parse();
             fail("Should have failed since the minute is more than 59");
@@ -162,7 +162,7 @@ public class DateParserTest {
     }
 
     @Test
-    public void shouldParseDateForValidInput() {
+    public void should_Parse_Date_For_Valid_Input() {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
         calendar.set(2012, Calendar.DECEMBER, 31, 23, 59, 0);

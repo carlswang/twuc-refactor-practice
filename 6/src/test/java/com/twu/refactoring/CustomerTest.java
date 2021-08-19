@@ -17,13 +17,13 @@ public class CustomerTest {
 
 	private static final String GOLD_PATH = "data/";
 
-    private Customer dinsdale = new Customer("Dinsdale Pirhana");
+    private final Customer dinsdale = new Customer("Dinsdale Pirhana");
 
-    private Movie python = new Movie("Monty Python and the Holy Grail", Movie.REGULAR);
-	private Movie ran = new Movie("Ran", Movie.REGULAR);
-	private Movie la = new Movie("LA Confidential", Movie.NEW_RELEASE);
-	private Movie trek = new Movie("Star Trek 13.2", Movie.NEW_RELEASE);
-	private Movie wallace = new Movie("Wallace and Gromit", Movie.CHILDRENS);
+    private final Movie python = new Movie("Monty Python and the Holy Grail", Movie.REGULAR);
+	private final Movie ran = new Movie("Ran", Movie.REGULAR);
+	private final Movie la = new Movie("LA Confidential", Movie.NEW_RELEASE);
+	private final Movie trek = new Movie("Star Trek 13.2", Movie.NEW_RELEASE);
+	private final Movie wallace = new Movie("Wallace and Gromit", Movie.CHILDRENS);
 
     @BeforeEach
     public void setUpData(){
@@ -35,33 +35,27 @@ public class CustomerTest {
    }
 
     @Test
-    public void shouldOutputEmptyStatement() throws Exception {
+    public void should_Output_Empty_Statement() throws Exception {
         Customer customer = new Customer("Golden Shark");
         verifyOutput(customer.statement(), "outputEmpty");
     }
 
     @Test
-    public void shouldOutputCustomerStatement() throws Exception {
+    public void should_Output_Customer_Statement() throws Exception {
         verifyOutput(dinsdale.statement(), "output1");
     }
 
     @Test
-    public void shouldOutputChangedStatement() throws Exception {
+    public void should_Output_Changed_Statement() throws Exception {
         la.setPriceCode(Movie.REGULAR);
         verifyOutput(dinsdale.statement(), "outputChange");
     }
-
-    /*
-    public void testHtml() throws Exception {
-        verifyOutput("1st Output", "outputHtml", dinsdale.htmlStatement());
-    }
-    */
     	
     protected void verifyOutput(String actualValue, String fileName) throws IOException{
         String filePath = getClass().getClassLoader().getResource(GOLD_PATH + fileName).getPath();
         BufferedReader file = new BufferedReader (new FileReader (filePath));
         BufferedReader actualStream = new BufferedReader (new StringReader (actualValue));
-        String thisFileLine;
+        String thisFileLine ;
         while  ((thisFileLine = file.readLine()) != null) {
             assertThat("in file: " + fileName, actualStream.readLine(), equalTo(thisFileLine));
         }
