@@ -17,15 +17,17 @@ public class OrderReceipt {
 		double tot = 0d;
 		output.append(order.getCustomerName())
 				.append(order.getCustomerAddress());
+
 		for (LineItem lineItem : order.getLineItems()) {
-			output.append(lineItem.getDescription()).append('\t')
-					.append(lineItem.getPrice()).append('\t')
-					.append(lineItem.getQuantity()).append('\t')
-					.append(lineItem.totalAmount()).append('\n');
+			lineItem.getLineItemInfo(output);
+		}
+
+		for (LineItem lineItem : order.getLineItems()) {
             double salesTax = lineItem.totalAmount() * .10;
             totSalesTx += salesTax;
             tot += lineItem.totalAmount() + salesTax;
 		}
+
 		output.append("Sales Tax").append('\t')
 				.append(totSalesTx)
 				.append("Total Amount").append('\t')
