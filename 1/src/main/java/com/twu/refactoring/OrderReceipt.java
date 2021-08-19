@@ -8,10 +8,7 @@ public class OrderReceipt {
 	}
 
 	public String printReceipt() {
-		return outputHead() + order.outputDetails();
-	}
-
-	private String outputHead() {
-		return "======Printing Orders======\n";
+		return "======Printing Orders======\n"
+				+ order.outputDetails();
 	}
 }

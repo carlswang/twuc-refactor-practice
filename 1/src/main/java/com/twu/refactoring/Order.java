@@ -14,11 +14,9 @@ public class Order {
     }
 
     public double getTotalTax() {
-        double totSalesTx = 0d;
-        for (LineItem lineItem : lineItemList) {
-            totSalesTx += lineItem.totalAmount() * .10;
-        }
-        return totSalesTx;
+        return lineItemList.stream()
+                .mapToDouble(lineItem -> lineItem.totalAmount() * .10)
+                .sum();
     }
 
     public String outputDetails() {
@@ -30,15 +28,12 @@ public class Order {
             lineItem.getLineItemInfo(output);
         }
 
-        double total = 0d;
-        for (LineItem lineItem : lineItemList) {
-            total += lineItem.totalAmount() + lineItem.totalAmount() * .10;
-        }
-
         output.append("Sales Tax").append('\t')
                 .append(getTotalTax())
                 .append("Total Amount").append('\t')
-                .append(total);
+                .append(lineItemList.stream()
+                        .mapToDouble(lineItem -> lineItem.totalAmount() + lineItem.totalAmount() * .10)
+                        .sum());
 
         return output.toString();
     }
