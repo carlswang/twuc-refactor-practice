@@ -1,5 +1,6 @@
 package com.twu.refactoring;
 
+
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -9,26 +10,25 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 
 public class OrderReceiptTest {
-    @Test
-    public void shouldPrintCustomerInformationOnOrder() {
-        Order order = new Order("Mr X", "Chicago, 60601", new ArrayList<LineItem>());
-        OrderReceipt receipt = new OrderReceipt(order);
 
-        String output = receipt.printReceipt();
+    @Test
+    public void should_Print_Customer_Information_On_Order() {
+        Order order = new Order("Mr X", "Chicago, 60601", new ArrayList<LineItem>());
+        OrderReceipt orderReceipt = new OrderReceipt(order);
+        String output = orderReceipt.printReceipt();
 
         assertThat(output, containsString("Mr X"));
         assertThat(output, containsString("Chicago, 60601"));
     }
 
     @Test
-    public void shouldPrintLineItemAndSalesTaxInformation() {
+    public void should_Print_Line_Item_And_Sales_Tax_Information() {
         ArrayList<LineItem> lineItems = new ArrayList<LineItem>() {{
             add(new LineItem("milk", 10.0, 2));
             add(new LineItem("biscuits", 5.0, 5));
             add(new LineItem("chocolate", 20.0, 1));
         }};
         OrderReceipt receipt = new OrderReceipt(new Order(null, null, lineItems));
-
         String output = receipt.printReceipt();
 
         assertThat(output, containsString("milk\t10.0\t2\t20.0\n"));
